@@ -1,0 +1,19 @@
+mat-tool-bar {
+    display: flex;
+  }
+  
+  .routerLink{
+    text-decoration-color: white;
+    color: white;
+  }
+  
+  .fill-space {
+    /* This fills the remaining space, by using flexbox.
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  
+  .separation{
+    padding-right: 20px;
+  }
+  

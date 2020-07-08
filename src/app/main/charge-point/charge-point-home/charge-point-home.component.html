@@ -1,0 +1,47 @@
+<app-navigation-bar></app-navigation-bar>
+<h1 class="header">CHARGE POINT</h1>
+<form class="form-container" [formGroup]="chargePointForm" (ngSubmit)="createChargePoint()">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Identity" formControlName="identity">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="CPO" formControlName="id">
+  </mat-form-field>
+  <button mat-raised-button color="primary"
+        matTooltip="You are about to create a new chargePoint"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+    Create
+  </button>
+</form>
+
+<table mat-table  [dataSource]="arrChargePoint" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="chargeid">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.chargeid}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="identity">
+    <th mat-header-cell *matHeaderCellDef> Identity </th>
+    <td mat-cell *matCellDef="let element"> {{element.identity}} </td>
+  </ng-container>
+
+   <!-- CPO Column -->
+  <ng-container matColumnDef="cpo">
+    <th mat-header-cell *matHeaderCellDef> CPO </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element" class="action-link">
+      <button mat-raised-button color="primary" (click)="deleteChargePoint(element.chargeid)">Delete</button>
+      <button mat-raised-button color="primary" (click)="goDetails(element.chargeid)">Update</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

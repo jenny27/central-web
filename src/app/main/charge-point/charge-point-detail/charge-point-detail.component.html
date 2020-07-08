@@ -1,0 +1,19 @@
+<app-navigation-bar></app-navigation-bar>
+<button mat-raised-button color="primary" (click)="goBack()">BACK</button>
+
+<form class="form-container" [formGroup]="chargePointForm" (ngSubmit)="updateChargePoint()">
+  <mat-form-field>
+    <input  matInput type="text" placeholder="ID" formControlName="chargeid" readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput type="text" placeholder="Identity" formControlName="identity">
+  </mat-form-field>
+  <mat-form-field>
+    <input   matInput type="text" placeholder="CPO" formControlName="id">
+  </mat-form-field>
+  <button mat-raised-button color="primary"
+        matTooltip="You are about to update a charge point profile"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+  Update
+</button>
+</form>
