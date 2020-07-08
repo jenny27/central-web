@@ -1,0 +1,48 @@
+<app-navigation-bar></app-navigation-bar>
+<h1 class="header">ORGANIZATION</h1>
+<form class="form-container" [formGroup]="organizationForm" (ngSubmit)="createOrganization()">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Legal Entity" formControlName="legalEntity">
+  </mat-form-field>
+  <button mat-raised-button color="primary"
+        matTooltip="You are about to create a new Organization"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+    Create
+  </button>
+</form>
+
+<table mat-table  [dataSource]="arrOrganization" class="mat-elevation-z8">
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="legalEntity">
+    <th mat-header-cell *matHeaderCellDef> Legal Entity </th>
+    <td mat-cell *matCellDef="let element"> {{element.legalEntity}} </td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element" class="action-link">
+      <button mat-raised-button color="primary" (click)="deleteOrganization(element.id)">Delete</button>
+      <button mat-raised-button color="primary" (click)="goDetails(element.id)">Update</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

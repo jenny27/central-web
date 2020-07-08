@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ChargePoint } from './ChargePoint';
+import { Organization } from './Organization';
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,32 @@ export class ApiServiceService {
     console.log(id);
     return this.httpClient.delete(`${this.localUrl}/chargePoint/${id}`, { headers: this.headers });
   }
+  public getOrganization(url?: string) {
+    console.log(this.headers);
+    return this.httpClient.get<Organization[]>(`${this.localUrl}/organization`, { headers: this.headers });
+  }
+
+  public getOrganizationById(id) {
+    console.log(id);
+    return this.httpClient.get<Organization>(`${this.localUrl}/organization/${id}`, { headers: this.headers });
+  }
+
+  public createOrganization(organization: Organization) {
+    console.log(organization);
+    return this.httpClient.post(`${this.localUrl}/organization`,  organization, { headers: this.headers });
+  }
+
+  public updateOrganization(organization: Organization) {
+    console.log(organization);
+    const id = organization.id;
+    console.log(id);
+    return this.httpClient.put(`${this.localUrl}/organization/${id}`, organization, { headers: this.headers });
+  }
+
+  public deleteOrganization(id) {
+    console.log(id);
+    return this.httpClient.delete(`${this.localUrl}/organization/${id}`, { headers: this.headers });
+  }
+
+
 }

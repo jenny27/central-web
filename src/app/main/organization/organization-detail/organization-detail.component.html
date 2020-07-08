@@ -1,0 +1,20 @@
+<app-navigation-bar></app-navigation-bar>
+<button mat-raised-button color="primary" (click)="goBack()">BACK</button>
+
+<form class="form-container" [formGroup]="organizationForm" (ngSubmit)="updateOrganization()">
+  <mat-form-field>
+    <input  matInput type="text" placeholder="ID" formControlName="id" readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <input  matInput type="text" placeholder="Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input   matInput type="text" placeholder="legalEntity" formControlName="legalEntity">
+  </mat-form-field>
+  <button mat-raised-button color="primary"
+        matTooltip="You are about to update a organization profile"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+  Update
+</button>
+</form>
+
